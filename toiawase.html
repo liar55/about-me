@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul>
+                <li><a href="http://127.0.0.1:5501/index.html">ホーム</a></li>
+                <li><a href="http://127.0.0.1:5501/ongaku.html">音楽</a></li>
+                <li><a href="http://127.0.0.1:5501/dzl.html">動画・配信視聴</a></li>
+                <li><a href="http://127.0.0.1:5501/anime.html">アニメ</a></li>
+            </ul>
+        </nav>
+        <h1>お問い合わせフォーム</h1>
+    </header>
+    <main>
+        <form class="contact-form" action="#" method="post">
+            <label for="name">お名前：</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">メールアドレス：</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">メッセージ：</label><br>
+            <textarea id="message" name="message" rows="5" required></textarea><br><br>
+            <button type="submit">送信</button>
+        </form>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 わたしの自己紹介サイト</p>
+    </footer>
+</body>
+</html>
