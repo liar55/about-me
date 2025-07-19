@@ -5,64 +5,84 @@
     <title>お問い合わせ</title>
     <style>
       body {
-        font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo",
-          sans-serif;
-        background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
+          "Yu Gothic", "Meiryo", "Arial", sans-serif;
+        background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
         margin: 0;
         padding: 0;
+        min-height: 100vh;
+        color: #7fa7c7;
+        font-weight: 400;
       }
       header {
-        background: linear-gradient(90deg, #90caf9 0%, #e3f2fd 100%);
-        color: #1565c0;
-        padding: 32px 0 18px 0;
+        background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%);
+        color: #90caf9;
+        padding: 4% 0 2.5% 0;
         text-align: center;
-        border-bottom-left-radius: 40px;
-        border-bottom-right-radius: 40px;
-        box-shadow: 0 4px 16px rgba(144, 202, 249, 0.1);
+        border-bottom-left-radius: 48px;
+        border-bottom-right-radius: 48px;
+        box-shadow: 0 6px 32px 0 #b3d8ff33, 0 0 60px 10px #fff8;
+      }
+      header h1 {
+        font-size: 3.2em;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        margin: 0.2em 0 0.3em 0;
       }
       nav {
         text-align: center;
         margin: 24px 0;
       }
       nav a {
-        color: #1976d2;
-        background: #ffffff;
+        color: #90caf9;
+        background: rgba(255, 255, 255, 0.95);
         text-decoration: none;
         margin: 0 18px;
         font-weight: bold;
-        font-size: 1.1em;
-        padding: 8px 18px;
-        border-radius: 20px;
-        box-shadow: 0 2px 8px rgba(144, 202, 249, 0.08);
-        transition: background 0.2s, color 0.2s;
+        font-size: 1.15em;
+        padding: 0.8em 2em;
+        border-radius: 32px;
+        box-shadow: 0 2px 12px 0 #b3d8ff22, 0 0 24px 2px #fff6;
+        letter-spacing: 0.04em;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
       }
       nav a:hover {
-        background: #90caf9;
+        background: #e3f2fd;
         color: #fff;
+        box-shadow: 0 4px 24px 0 #90caf966, 0 0 40px 6px #fff8;
       }
       main {
-        max-width: 500px;
+        max-width: 700px;
         margin: 48px auto 80px auto;
-        background: #ffffff;
+        background: rgba(255, 255, 255, 0.98);
         padding: 36px;
-        border-radius: 30px;
-        box-shadow: 0 4px 24px rgba(144, 202, 249, 0.1);
+        border-radius: 36px;
+        box-shadow: 0 4px 32px 0 #b3d8ff22, 0 0 60px 10px #fff8;
+        color: #7fa7c7;
+        font-weight: 400;
       }
       h2 {
-        color: #1976d2;
-        font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+        color: #90caf9;
+        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
+          "Yu Gothic", sans-serif;
         font-size: 2em;
         margin-bottom: 24px;
+        font-weight: 400;
         text-align: center;
       }
       form {
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 24px;
+        box-shadow: 0 2px 16px 0 #b3d8ff22, 0 0 24px 2px #fff6;
+        padding: 24px;
         display: flex;
         flex-direction: column;
         gap: 18px;
+        margin-bottom: 32px;
       }
       label {
-        font-weight: bold;
-        color: #1565c0;
+        font-weight: 400;
+        color: #7fa7c7;
         margin-bottom: 6px;
       }
       input,
@@ -70,45 +90,68 @@
         font-size: 1em;
         padding: 10px;
         border-radius: 10px;
-        border: 1px solid #90caf9;
-        background: #e3f2fd;
+        border: 1px solid #e3f2fd;
+        background: #f7fbff;
         resize: vertical;
+        color: #7fa7c7;
+        font-weight: 400;
       }
       input:focus,
       textarea:focus {
         outline: none;
-        border-color: #1976d2;
+        border-color: #90caf9;
         background: #fff;
       }
       button {
-        background: #90caf9;
-        color: #fff;
-        font-weight: bold;
+        background: #e3f2fd;
+        color: #90caf9;
+        font-weight: 400;
         border: none;
         border-radius: 20px;
         padding: 12px;
         font-size: 1.1em;
         cursor: pointer;
-        box-shadow: 0 2px 8px rgba(144, 202, 249, 0.1);
+        box-shadow: 0 2px 8px #b3d8ff22;
         transition: background 0.2s;
       }
       button:hover {
-        background: #1976d2;
+        background: #90caf9;
+        color: #fff;
       }
       footer {
-        background: linear-gradient(90deg, #90caf9 0%, #e3f2fd 100%);
-        color: #1565c0;
+        background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%);
+        color: #90caf9;
         text-align: center;
-        padding: 16px 0;
+        padding: 2.5rem 0;
         position: fixed;
         width: 100%;
         bottom: 0;
-        font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
         font-size: 1.1em;
         letter-spacing: 0.05em;
-        border-top-left-radius: 40px;
-        border-top-right-radius: 40px;
-        box-shadow: 0 -4px 16px rgba(144, 202, 249, 0.1);
+        border-radius: 60px 60px 0 0;
+        box-shadow: 0 -8px 32px 8px #b3d8ff44, 0 0 60px 10px #fff8;
+        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
+          "Yu Gothic", sans-serif;
+      }
+      @media (max-width: 600px) {
+        header,
+        footer {
+          padding: 1.2rem;
+          border-radius: 0;
+        }
+        nav a {
+          display: block;
+          margin: 0.7rem 0;
+        }
+        main {
+          max-width: 98vw;
+          padding: 1.2rem 0.7rem;
+          border-radius: 30px;
+        }
+        form {
+          border-radius: 18px;
+          padding: 1.2rem 0.7rem;
+        }
       }
     </style>
   </head>
