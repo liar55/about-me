@@ -1,16 +1,15 @@
-
-.body {
-    font-family: Arial, sans-serif;
-    line-height: 5;
+body {
+    font-family: 'Rounded Mplus 1c', 'Arial', sans-serif;
+    background: linear-gradient(180deg, #e3f0ff 0%, #ffffff 100%);
     margin: 0;
     padding: 0;
-    background-color: #B0C4DE;
+    min-height: 100vh;
 }
 
 .header {
-    background: #B0C4DE;
-    color: #fff;
-    padding: 5% 0;
+    background: linear-gradient(90deg, rgba(179,216,255,0.7) 60%, rgba(255,255,255,0.8) 100%);
+    color: #7fbfff;
+    padding: 5% 0 3% 0;
     text-align: center;
 }
 
@@ -20,20 +19,25 @@
 }
 
 .nav ul li {
-    display: inline;
-    margin-right: 1rem;
+    display: inline-block;
+    margin: 0 1.2rem;
 }
 
 .nav ul li a {
-    color: #fff;
+    color: #7fbfff;
+    background: rgba(255,255,255,0.85);
+    padding: 0.7em 1.5em;
+    border-radius: 30px;
     text-decoration: none;
 }
 
 .footer {
     text-align: center;
-    padding: 3rem;
-    background: #B0C4DE;
-    color: #fff;
+    padding: 2.5rem 0;
+    background: linear-gradient(90deg, rgba(179,216,255,0.7) 60%, rgba(255,255,255,0.8) 100%);
+    color: #7fbfff;
+    border-radius: 60px 60px 0 0;
+    box-shadow: 0 -8px 32px 8px #b3d8ff44, 0 0 60px 10px #fff8;
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -41,11 +45,16 @@
 
 @media (max-width: 600px) {
     .header, .footer {
-        padding: 1rem;
+        padding: 1.2rem;
+        border-radius: 0;
     }
-
     .nav ul li {
         display: block;
-        margin: 0.5rem 0;
+        margin: 0.7rem 0;
+    }
+    section, .contact-form {
+        max-width: 98vw;
+        padding: 1.2rem 0.7rem;
+        border-radius: 30px;
     }
 }

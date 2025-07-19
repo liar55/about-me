@@ -1,48 +1,173 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
     <title>おすすめアニメ紹介</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header class="header">
-        <nav class="nav">
-            <ul>
-                <li><a href="http://127.0.0.1:5501/index.html">ホーム</a></li>
-                <li><a href="http://127.0.0.1:5501/ongaku.html">音楽</a></li>
-                <li><a href="http://127.0.0.1:5501/dzl.html">動画・配信視聴</a></li>
-                <li><a href="http://127.0.0.1:5501/toiawase.html">お問い合わせ</a></li>
-            </ul>
-        </nav>
-        <h1>おすすめアニメ紹介</h1>
+    <style>
+      body {
+        font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo",
+          sans-serif;
+        background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background: linear-gradient(90deg, #90caf9 0%, #e3f2fd 100%);
+        color: #1565c0;
+        padding: 32px 0 18px 0;
+        text-align: center;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        box-shadow: 0 4px 16px rgba(144, 202, 249, 0.1);
+      }
+      nav {
+        text-align: center;
+        margin: 24px 0;
+      }
+      nav a {
+        color: #1976d2;
+        background: #ffffff;
+        text-decoration: none;
+        margin: 0 18px;
+        font-weight: bold;
+        font-size: 1.1em;
+        padding: 8px 18px;
+        border-radius: 20px;
+        box-shadow: 0 2px 8px rgba(144, 202, 249, 0.08);
+        transition: background 0.2s, color 0.2s;
+      }
+      nav a:hover {
+        background: #90caf9;
+        color: #fff;
+      }
+      main {
+        max-width: 700px;
+        margin: 48px auto 80px auto;
+        background: #ffffff;
+        padding: 36px;
+        border-radius: 30px;
+        box-shadow: 0 4px 24px rgba(144, 202, 249, 0.1);
+      }
+      h2 {
+        color: #1976d2;
+        font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 2em;
+        margin-bottom: 24px;
+      }
+      .anime-list {
+        list-style: none;
+        padding: 0;
+      }
+      .anime-list li {
+        margin-bottom: 32px;
+        padding-bottom: 20px;
+        border-bottom: 1px dashed #90caf9;
+        background: #e3f2fd;
+        border-radius: 18px;
+        box-shadow: 0 2px 8px rgba(144, 202, 249, 0.06);
+        padding: 18px;
+      }
+      .anime-title {
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #1976d2;
+        font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+      }
+      .anime-desc {
+        margin-top: 10px;
+        color: #1565c0;
+        font-size: 1.05em;
+      }
+      .anime-video {
+        margin-top: 16px;
+        text-align: center;
+      }
+      .anime-video iframe {
+        border-radius: 16px;
+        box-shadow: 0 2px 12px rgba(144, 202, 249, 0.12);
+      }
+      footer {
+        background: linear-gradient(90deg, #90caf9 0%, #e3f2fd 100%);
+        color: #1565c0;
+        text-align: center;
+        padding: 16px 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 1.1em;
+        letter-spacing: 0.05em;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        box-shadow: 0 -4px 16px rgba(144, 202, 249, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>anime</h1>
     </header>
+    <nav>
+      <a href="http://127.0.0.1:5500/about-me/index.html">ホーム</a>
+      <a href="http://127.0.0.1:5500/about-me/zikosyoukai.html">自己紹介</a>
+      <a href="http://127.0.0.1:5500/about-me/ongaku.html">音楽</a>
+      <a href="http://127.0.0.1:5500/about-me/dzl.html">動画・配信視聴</a>
+      <a href="http://127.0.0.1:5500/about-me/anime.html">アニメ</a>
+      <a href="toiawase.html">お問い合わせ</a>
+    </nav>
     <main>
-        <section class="anime-intro">
-            <h2>転生したらスライムだった件</h2>
-            <img src="https://www.ten-sura.com/assets/img/ogp.jpg" alt="転生したらスライムだった件 キービジュアル" style="width:200px;">
-            <p>異世界転生×成長ファンタジー！スライムに転生したリムルの冒険と仲間たちとの絆が魅力です。</p>
-            <div style="margin:1em 0;">
-                <iframe width="300" height="169" src="https://www.youtube.com/embed/5qap5aO4i9A" title="転生したらスライムだった件 公式PV" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-        <section class="anime-intro">
-            <h2>薬屋のひとりごと</h2>
-            <img src="https://kusuriyanohitorigoto.jp/assets/img/ogp.jpg" alt="薬屋のひとりごと キービジュアル" style="width:200px;">
-            <p>後宮を舞台にした謎解き×中華ファンタジー。主人公・猫猫の推理と人間模様が魅力です。</p>
-            <div style="margin:1em 0;">
-                <iframe width="300" height="169" src="https://www.youtube.com/embed/2ZL1XK2Qb6A" title="薬屋のひとりごと 公式PV" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-        <section class="anime-intro">
-            <h2>僕のヒーローアカデミア</h2>
-            <img src="https://heroaca.com/assets/img/ogp.jpg" alt="僕のヒーローアカデミア キービジュアル" style="width:200px;">
-            <p>個性（超能力）を持つ人々が活躍するヒーローアクション。友情・努力・成長の物語が熱い！</p>
-            <div style="margin:1em 0;">
-                <iframe width="300" height="169" src="https://www.youtube.com/embed/EPkYLRbPPh8" title="僕のヒーローアカデミア 公式PV" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
+      <h2>私のおすすめアニメ</h2>
+      <ul class="anime-list">
+        <li>
+          <span class="anime-title">転生したらスライムだった件</span>
+          <div class="anime-desc">
+            異世界転生した主人公がスライムとして成長し、仲間とともに世界を変えていく物語。バトル・友情・成長が楽しめます！
+          </div>
+          <div class="anime-video">
+            <iframe
+              width="320"
+              height="180"
+              src="https://www.youtube.com/embed/5qap5aO4i9A"
+              title="転生したらスライムだった件 PV"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </li>
+        <li>
+          <span class="anime-title">薬屋のひとりごと</span>
+          <div class="anime-desc">
+            後宮で働く薬屋の少女が、知識と推理力で様々な事件を解決していくミステリー＆歴史アニメ。知的で面白い展開が魅力です。
+          </div>
+          <div class="anime-video">
+            <iframe
+              width="320"
+              height="180"
+              src="https://www.youtube.com/embed/0Qw1JZ2kqK4"
+              title="薬屋のひとりごと PV"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </li>
+        <li>
+          <span class="anime-title">僕のヒーローアカデミア</span>
+          <div class="anime-desc">
+            個性（超能力）を持つ人々が活躍する世界で、ヒーローを目指す少年たちの成長と熱いバトルを描く王道ヒーローアニメです！
+          </div>
+          <div class="anime-video">
+            <iframe
+              width="320"
+              height="180"
+              src="https://www.youtube.com/embed/EPk6hZqkYzA"
+              title="僕のヒーローアカデミア PV"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </li>
+      </ul>
     </main>
-</body>
+    <footer>&copy; 2025 おすすめアニメ紹介</footer>
+  </body>
 </html>

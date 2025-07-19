@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>お問い合わせ</title>
+    <title>私の自己紹介フォーム</title>
     <style>
       body {
         font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo",
@@ -54,6 +54,20 @@
         font-size: 2em;
         margin-bottom: 24px;
         text-align: center;
+      }
+      h3 {
+        color: #1565c0;
+        font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 1.5em;
+        margin-bottom: 16px;
+        text-align: left;
+      }
+      section {
+        background: #e3f2fd;
+        border-radius: 18px;
+        box-shadow: 0 2px 8px rgba(144, 202, 249, 0.06);
+        padding: 24px;
+        margin-bottom: 32px;
       }
       form {
         display: flex;
@@ -114,7 +128,7 @@
   </head>
   <body>
     <header>
-      <h1>information</h1>
+      <h1>profile</h1>
     </header>
     <nav>
       <a href="index.html">ホーム</a>
@@ -125,17 +139,24 @@
       <a href="toiawase.html">お問い合わせ</a>
     </nav>
     <main>
-      <h2>お問い合わせフォーム</h2>
-      <form>
-        <label for="name">お名前</label>
-        <input type="text" id="name" name="name" required />
-        <label for="email">メールアドレス</label>
-        <input type="email" id="email" name="email" required />
-        <label for="message">お問い合わせ内容</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        <button type="submit">送信</button>
-      </form>
+      <h2>自己紹介</h2>
+      <section
+        style="
+          background: #e3f2fd;
+          border-radius: 18px;
+          box-shadow: 0 2px 8px rgba(144, 202, 249, 0.06);
+          padding: 24px;
+          margin-bottom: 32px;
+        "
+      >
+        <h3>こんにちは！</h3>
+        <p>名前:若狹 希海</p>
+        <p>出身地:兵庫県</p>
+        <p>ホワイトハッカー専攻</p>
+        <p>趣味:音楽鑑賞・アニメ・ゲーム実況動画を見ること。</p>
+        <p>好きなアーティスト：Stray Kids、aespa、SEVENTEEN</p>
+      </section>
     </main>
-    <footer>&copy; 2025 お問い合わせページ</footer>
+    <footer>&copy; 2025 自己紹介フォーム</footer>
   </body>
 </html>

@@ -1,81 +1,265 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>好きな音楽紹介</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header class="header">
-        <nav class="nav">
-            <ul>
-                <li><a href="http://127.0.0.1:5501/index.html">ホーム</a></li>
-                <li><a href="http://127.0.0.1:5501/dzl.html">動画・配信視聴</a></li>
-                <li><a href="http://127.0.0.1:5501/anime.html">アニメ</a></li>
-                <li><a href="http://127.0.0.1:5501/toiawase.html">お問い合わせ</a></li>
-            </ul>
-        </nav>
-        <h1>おすすめ音楽紹介</h1>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      body {
+        font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo",
+          sans-serif;
+        background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background: linear-gradient(90deg, #90caf9 0%, #e3f2fd 100%);
+        color: #1565c0;
+        padding: 32px 0 18px 0;
+        text-align: center;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        box-shadow: 0 4px 16px rgba(144, 202, 249, 0.1);
+      }
+      nav {
+        text-align: center;
+        margin: 24px 0;
+      }
+      nav a {
+        color: #1976d2;
+        background: #ffffff;
+        text-decoration: none;
+        margin: 0 18px;
+        font-weight: bold;
+        font-size: 1.1em;
+        padding: 8px 18px;
+        border-radius: 20px;
+        box-shadow: 0 2px 8px rgba(144, 202, 249, 0.08);
+        transition: background 0.2s, color 0.2s;
+      }
+      nav a:hover {
+        background: #90caf9;
+        color: #fff;
+      }
+      main {
+        max-width: 700px;
+        margin: 48px auto 80px auto;
+        background: #ffffff;
+        padding: 36px;
+        border-radius: 30px;
+        box-shadow: 0 4px 24px rgba(144, 202, 249, 0.1);
+      }
+      h2 {
+        color: #1976d2;
+        font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 2em;
+        margin-bottom: 24px;
+      }
+      .music-intro {
+        background: #e3f2fd;
+        border-radius: 18px;
+        box-shadow: 0 2px 8px rgba(144, 202, 249, 0.06);
+        padding: 24px;
+        margin-bottom: 32px;
+      }
+      .music-intro img {
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(144, 202, 249, 0.1);
+        margin-bottom: 12px;
+      }
+      .music-intro p {
+        color: #1565c0;
+        font-size: 1.05em;
+      }
+      .music-intro iframe {
+        border-radius: 16px;
+        box-shadow: 0 2px 12px rgba(144, 202, 249, 0.12);
+      }
+      footer {
+        background: linear-gradient(90deg, #90caf9 0%, #e3f2fd 100%);
+        color: #1565c0;
+        text-align: center;
+        padding: 16px 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+        font-size: 1.1em;
+        letter-spacing: 0.05em;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        box-shadow: 0 -4px 16px rgba(144, 202, 249, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>music</h1>
     </header>
+    <nav>
+      <a href="index.html">ホーム</a>
+      <a href="zikosyoukai.html">自己紹介</a>
+      <a href="ongaku.html">音楽</a>
+      <a href="dzl.html">動画・配信視聴</a>
+      <a href="anime.html">アニメ</a>
+      <a href="toiawase.html">お問い合わせ</a>
+    </nav>
     <main>
-        <section class="music-intro">
-            <h2>Stray kids - Hollow</h2>
-            <img src="https://cdn.smehost.net/2020sonymusicjpcom-jpprod/wp-content/uploads/2024/05/StrayKids_Hollow_JK.jpg" alt="Stray kids Hollow ジャケット" style="width:200px;">
-            <p>6月に発売された最新の日本語曲です。</p>
-            <div style="margin:1em 0;">
-                <iframe width="300" height="169" src="https://youtu.be/F4qFzuCA9Po?si=6bv10mFoqS6gcT4E" title="Stray kids - Hollow" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-        <section class="music-intro">
-            <h2>aespa - Whiplash</h2>
-            <img src="https://aespa-official.jp/" alt="aespa Whiplash ジャケット" style="width:200px;">
-            <p>aespaの人気曲「Whiplash」。エッジの効いたサウンドとパワフルなパフォーマンスが魅力です。</p>
-            <div style="margin:1em 0;">
-                <iframe width="300" height="169" src="https://www.youtube.com/embed/4oT1bQwF6lI" title="aespa - Whiplash" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-        <section class="music-intro">
-            <h2>SEVENTEEN - THUNDER</h2>
-            <img src="https://www.seventeen-17.jp/" alt="SEVENTEEN THUNDER ジャケット" style="width:200px;">
-            <p>SEVENTEENのアルバム「HAPPY BURSTDAY」に収録された人気曲。疾走感のあるサウンドと力強い歌声が魅力です。</p>
-            <div style="margin:1em 0;">
-                <iframe width="300" height="169" src="https://youtu.be/pS57UX6s-xw?si=nptJ5uKuF7ytwASM" title="SEVENTEEN - Thunder" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-        <section class="music-intro">
-            <h2>BABYMONSTER - LIKE THAT</h2>
-            <img src="https://yg-babymonster-official.jp/" alt="BABYMONSTER LIKE THAT ジャケット" style="width:200px;">
-            <p>BABYMONSTERの「LIKE THAT」は、クールなビートとパワフルなボーカルが魅力の最新K-POPナンバーです。</p>
-            <div style="margin:1em 0;">
-                <iframe width="300" height="169" src="https://youtu.be/M8r3x4Re8-I?si=m07sBF0yLO1svD1E" title="BABYMONSTER - LIKE THAT" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-        <section class="music-intro">
-            <h2>ITZY - LOCO</h2>
-            <img src="https://www.itzyjapan.com/" alt="ITZY LOCO ジャケット" style="width:200px;">
-            <p>ITZYの「LOCO」は、エネルギッシュなビートとキャッチーなサビが特徴の大人気K-POPソングです。</p>
-            <div style="margin:1em 0;">
-                <iframe width="300" height="169" src="https://youtu.be/MjCZfZfucEc?si=PqwJ2xsoNTTak6g-" title="ITZY - LOCO" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-        <section class="music-intro">
-            <h2>Katy Perry - Firework</h2>
-            <img src="https://www.katyperry.com/#home" alt="Katy Perry Firework ジャケット" style="width:200px;">
-            <p>世界中で愛されるKaty Perryの代表曲。前向きなメッセージと力強い歌声が心を打つ名曲です。</p>
-            <div style="margin:1em 0;">
-                <iframe width="300" height="169" src="https://youtu.be/QGJuMBdaqIw?si=dvTaEv6-q8-_BOrJ" title="Katy Perry - Firework" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-        <section class="music-intro">
-            <h2>Ed Sheeran - Shape of You</h2>
-            <img src="https://upload.wikimedia.org/wikipedia/en/4/45/Divide_cover.png" alt="Ed Sheeran Shape of You ジャケット" style="width:200px;">
-            <p>世界的ヒット曲「Shape of You」。キャッチーなメロディとリズムが特徴で、世界中で愛されています。</p>
-            <div style="margin:1em 0;">
-                <iframe width="300" height="169" src="https://youtu.be/JGwWNGJdvx8?si=Q9IbW8XEjUFevBH-" title="Ed Sheeran - Shape of You" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
+      <section class="music-intro">
+        <h2>Stray kids - Hollow</h2>
+        <img
+          src="https://cdn.smehost.net/2020sonymusicjpcom-jpprod/wp-content/uploads/2024/05/StrayKids_Hollow_JK.jpg"
+          alt="Stray kids Hollow ジャケット"
+          style="width: 200px"
+        />
+        <p>
+          心の空虚感と葛藤をテーマにしたエモーショナルな楽曲。力強いラップとメロディアスなビートが絶妙に絡み合い、聴く人に深い感情を呼び起こす一曲です。
+        </p>
+        <div style="margin: 1em 0">
+          <iframe
+            width="300"
+            height="169"
+            src="https://youtu.be/F4qFzuCA9Po?si=6bv10mFoqS6gcT4E"
+            title="Stray kids - Hollow"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+      <section class="music-intro">
+        <h2>aespa - Whiplash</h2>
+        <img
+          src="https://aespa-official.jp/"
+          alt="aespa Whiplash ジャケット"
+          style="width: 200px"
+        />
+        <p>
+          aespaの人気曲「Whiplash」。エッジの効いたサウンドとパワフルなパフォーマンスが魅力です。
+        </p>
+        <div style="margin: 1em 0">
+          <iframe
+            width="300"
+            height="169"
+            src="https://www.youtube.com/embed/4oT1bQwF6lI"
+            title="aespa - Whiplash"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+      <section class="music-intro">
+        <h2>SEVENTEEN - THUNDER</h2>
+        <img
+          src="https://www.seventeen-17.jp/"
+          alt="SEVENTEEN THUNDER ジャケット"
+          style="width: 200px"
+        />
+        <p>
+          SEVENTEENのアルバム「HAPPY
+          BURSTDAY」に収録された人気曲。疾走感のあるサウンドと力強い歌声が魅力です。
+        </p>
+        <div style="margin: 1em 0">
+          <iframe
+            width="300"
+            height="169"
+            src="https://youtu.be/pS57UX6s-xw?si=nptJ5uKuF7ytwASM"
+            title="SEVENTEEN - Thunder"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+      <section class="music-intro">
+        <h2>BABYMONSTER - LIKE THAT</h2>
+        <img
+          src="https://yg-babymonster-official.jp/"
+          alt="BABYMONSTER LIKE THAT ジャケット"
+          style="width: 200px"
+        />
+        <p>
+          BABYMONSTERの「LIKE
+          THAT」は、クールなビートとパワフルなボーカルが魅力の最新K-POPナンバーです。
+        </p>
+        <div style="margin: 1em 0">
+          <iframe
+            width="300"
+            height="169"
+            src="https://youtu.be/M8r3x4Re8-I?si=m07sBF0yLO1svD1E"
+            title="BABYMONSTER - LIKE THAT"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+      <section class="music-intro">
+        <h2>ITZY - LOCO</h2>
+        <img
+          src="https://www.itzyjapan.com/"
+          alt="ITZY LOCO ジャケット"
+          style="width: 200px"
+        />
+        <p>
+          ITZYの「LOCO」は、エネルギッシュなビートとキャッチーなサビが特徴の大人気K-POPソングです。
+        </p>
+        <div style="margin: 1em 0">
+          <iframe
+            width="300"
+            height="169"
+            src="https://youtu.be/MjCZfZfucEc?si=PqwJ2xsoNTTak6g-"
+            title="ITZY - LOCO"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+      <section class="music-intro">
+        <h2>Katy Perry - Firework</h2>
+        <img
+          src="https://www.katyperry.com/#home"
+          alt="Katy Perry Firework ジャケット"
+          style="width: 200px"
+        />
+        <p>
+          世界中で愛されるKaty
+          Perryの代表曲。前向きなメッセージと力強い歌声が心を打つ名曲です。
+        </p>
+        <div style="margin: 1em 0">
+          <iframe
+            width="300"
+            height="169"
+            src="https://youtu.be/QGJuMBdaqIw?si=dvTaEv6-q8-_BOrJ"
+            title="Katy Perry - Firework"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+      <section class="music-intro">
+        <h2>Ed Sheeran - Shape of You</h2>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/4/45/Divide_cover.png"
+          alt="Ed Sheeran Shape of You ジャケット"
+          style="width: 200px"
+        />
+        <p>
+          世界的ヒット曲「Shape of
+          You」。キャッチーなメロディとリズムが特徴で、世界中で愛されています。
+        </p>
+        <div style="margin: 1em 0">
+          <iframe
+            width="300"
+            height="169"
+            src="https://youtu.be/JGwWNGJdvx8?si=Q9IbW8XEjUFevBH-"
+            title="Ed Sheeran - Shape of You"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
     </main>
-    
-</body>
+    <footer>
+      <p>&copy; 2023 音楽紹介サイト</p>
+    </footer>
+  </body>
 </html>
