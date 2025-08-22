@@ -1,5 +1,5 @@
 # about-me
-サイトURL https://github.com/liar55/about-me.git
+サイトURL https://liar55.github.io/about-me/
 
 このサイトは私の自己紹介のために制作しました。
 私の好きな雰囲気で作りたかったので、空色と白色を基調とした天使界隈風にデザインしてみました。
