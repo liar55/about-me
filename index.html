@@ -120,6 +120,47 @@
         font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
           "Yu Gothic", sans-serif;
       }
+      .slider-container {
+        position: relative;
+        width: 320px;
+        margin: 0 auto 1.5em auto;
+        height: 300px;
+        overflow: hidden;
+      }
+      .slider {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+        width: 960px;
+      }
+      .slider img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 18px;
+        box-shadow: 0 2px 8px #b3d8ff44;
+        margin: 0 10px;
+        background: #e3f2fd;
+      }
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        font-size: 2em;
+        color: #90caf9;
+        cursor: pointer;
+        box-shadow: 0 2px 8px #b3d8ff44;
+      }
+      .slider-btn.prev {
+        left: 0;
+      }
+      .slider-btn.next {
+        right: 0;
+      }
       @media (max-width: 600px) {
         header,
         footer {
@@ -138,6 +179,19 @@
         section {
           border-radius: 30px;
           padding: 1.2rem 0.7rem;
+        }
+        .slider-container {
+          width: 98vw;
+          height: 40vw;
+          min-height: 180px;
+        }
+        .slider img {
+          width: 90vw;
+          height: 40vw;
+          min-height: 180px;
+        }
+        .slider {
+          width: 270vw;
         }
       }
     </style>
@@ -159,10 +213,24 @@
     <main style="padding-top: 180px">
       <section id="profile">
         <h2>MY</h2>
-        <p>
-          こんにちは、わたしは[若狹
-          希海]です。これはわたしの自己紹介サイトです。
-        </p>
+        <div class="slider-container">
+          <div class="slider">
+            <img
+              src="https://jp-prod.asyncgw.teams.microsoft.com/v1/objects/0-wjp-d1-2b47218c9b0a4ac1ffd594f5895b0b60/views/imgpsh_fullsize"
+              alt="プロフィール写真1"
+            />
+            <img
+              src="https://jp-prod.asyncgw.teams.microsoft.com/v1/objects/0-wjp-d2-7687c9e8ec93c8ef28a0d22227736fbe/views/imgpsh_fullsize"
+              alt="プロフィール写真2"
+            />
+            <img
+              src="https://jp-prod.asyncgw.teams.microsoft.com/v1/objects/0-wjp-d4-98895ad0120bcbd60f9c13606c67347f/views/imgpsh_fullsize"
+              alt="プロフィール写真3"
+            />
+          </div>
+          <button class="slider-btn prev">&#60;</button>
+          <button class="slider-btn next">&#62;</button>
+        </div>
       </section>
       <section id="hobbies">
         <h2>HOBBIES</h2>
@@ -174,7 +242,7 @@
       </section>
     </main>
     <footer class="footer">
-      <p>&copy; 2025 わたしの自己紹介サイト</p>
+      <p>&copy; home</p>
     </footer>
     <script src="js/scripts.js"></script>
   </body>
