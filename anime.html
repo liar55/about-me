@@ -22,6 +22,11 @@
         border-bottom-left-radius: 48px;
         border-bottom-right-radius: 48px;
         box-shadow: 0 6px 32px 0 #b3d8ff33, 0 0 60px 10px #fff8;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
       }
       header h1 {
         font-size: 3.2em;
@@ -29,12 +34,53 @@
         letter-spacing: 0.06em;
         margin: 0.2em 0 0.3em 0;
       }
-      nav {
+      /* hamburger（基準と揃える） */
+      .hamburger {
+        display: none;
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        width: 38px;
+        height: 38px;
+        z-index: 2001;
+        cursor: pointer;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+      }
+      .hamburger span,
+      .hamburger span:before,
+      .hamburger span:after {
+        display: block;
+        position: absolute;
+        width: 32px;
+        height: 4px;
+        background: #90caf9;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      .hamburger span {
+        top: 17px;
+        left: 3px;
+      }
+      .hamburger span:before {
+        content: "";
+        top: -10px;
+        left: 0;
+      }
+      .hamburger span:after {
+        content: "";
+        top: 10px;
+        left: 0;
+      }
+
+      nav.desktop-nav {
         text-align: center;
         margin: 24px 0;
       }
       nav a {
-        color: #a3c7e8;
+        color: #90caf9;
         background: rgba(255, 255, 255, 0.95);
         text-decoration: none;
         margin: 0 18px;
@@ -50,66 +96,35 @@
         background: #e3f2fd;
         color: #fff;
         box-shadow: 0 4px 24px 0 #90caf966, 0 0 40px 6px #fff8;
+        transform: translateY(-1px);
       }
-      main {
-        max-width: 700px;
-        margin: 48px auto 80px auto;
-        background: rgba(255, 255, 255, 0.98);
-        padding: 36px;
-        border-radius: 36px;
-        box-shadow: 0 4px 32px 0 #b3d8ff22, 0 0 60px 10px #fff8;
-        color: #7fa7c7;
-        font-weight: 400;
-      }
-      h2,
-      .anime-title {
-        color: #a3c7e8;
-        font-weight: 400;
-      }
-      .anime-title {
-        font-size: 2em;
-        font-weight: 400;
-        color: #a3c7e8;
-        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
-          "Yu Gothic", sans-serif;
-        margin-bottom: 0.5em;
-      }
-      .anime-list {
-        list-style: none;
-        padding: 0;
-      }
-      .anime-list li {
-        margin-bottom: 32px;
-        padding-bottom: 20px;
-        border-bottom: 1px dashed #e3f2fd;
-        background: rgba(255, 255, 255, 0.98);
-        border-radius: 24px;
-        box-shadow: 0 2px 16px 0 #b3d8ff22, 0 0 24px 2px #fff6;
-        padding: 24px;
-      }
-      .anime-list li a {
-        display: flex;
-        justify-content: center;
+
+      /* モバイルメニューのスライドインとスタイル（基準と一致） */
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
         align-items: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70vw;
+        max-width: 320px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -4px 0 32px #b3d8ff44;
+        z-index: 2000;
+        padding: 80px 24px 24px 24px;
+        gap: 1.5em;
+        border-radius: 0 0 36px 36px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
       }
-      .anime-list li a img {
-        width: 270px !important;
-        max-width: 90vw;
+      .nav-mobile.open {
+        display: flex;
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
       }
-      .anime-desc {
-        margin-top: 10px;
-        color: #7fa7c7;
-        font-weight: 400;
-        font-size: 1.05em;
-      }
-      .anime-video {
-        margin-top: 16px;
-        text-align: center;
-      }
-      .anime-video iframe {
-        border-radius: 16px;
-        box-shadow: 0 2px 12px rgba(144, 202, 249, 0.12);
-      }
+
       footer {
         background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%);
         color: #a3c7e8;
@@ -131,9 +146,24 @@
           padding: 1.2rem;
           border-radius: 0;
         }
-        nav a {
-          display: block;
-          margin: 0.7rem 0;
+        .hamburger {
+          display: flex;
+        }
+        nav.desktop-nav {
+          display: none;
+        }
+        /* スライドインの初期状態 */
+        .nav-mobile {
+          display: none;
+          transform: translateX(100%);
+          opacity: 0;
+          pointer-events: none;
+        }
+        .nav-mobile.open {
+          display: flex;
+          transform: translateX(0);
+          opacity: 1;
+          pointer-events: auto;
         }
         main {
           max-width: 98vw;
@@ -144,21 +174,67 @@
           border-radius: 18px;
           padding: 1.2rem 0.7rem;
         }
+        /* モバイルリンクのhoverも基準に合わせる */
+        .nav-mobile a {
+          color: #90caf9;
+          background: rgba(255, 255, 255, 0.9);
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 1.15em;
+          padding: 0.8em 2em;
+          border-radius: 36px;
+          box-shadow: 0 2px 8px #b3d8ff44;
+          letter-spacing: 0.04em;
+          transition: background 0.2s, color 0.2s, box-shadow 0.2s,
+            transform 0.2s;
+          width: 100%;
+          text-align: center;
+        }
+        .nav-mobile a:hover {
+          background: rgba(255, 255, 255, 0.98);
+          box-shadow: 0 3px 12px #b3d8ff66;
+          transform: translateY(-1px);
+        }
+      }
+      /* ハンバーガー開閉アニメーション（基準と一致） */
+      .hamburger.open span {
+        transform: rotate(45deg);
+        background: #64b5f6;
+      }
+      .hamburger.open span:before {
+        top: 0;
+        transform: rotate(90deg);
+        background: #64b5f6;
+      }
+      .hamburger.open span:after {
+        opacity: 0;
+        transform: translateX(-8px);
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>anime</h1>
+    <header
+      style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000"
+    >
+      <h1 style="margin-bottom: 0.5em">anime</h1>
+      <div class="hamburger" id="hamburger-menu"><span></span></div>
+      <nav class="desktop-nav">
+        <a href="index.html">home</a>
+        <a href="zikosyoukai.html">profile</a>
+        <a href="ongaku.html">music</a>
+        <a href="dzl.html">streamer</a>
+        <a href="anime.html">anime</a>
+        <a href="toiawase.html">information</a>
+      </nav>
+      <div class="nav-mobile" id="nav-mobile">
+        <a href="index.html">home</a>
+        <a href="zikosyoukai.html">profile</a>
+        <a href="ongaku.html">music</a>
+        <a href="dzl.html">streamer</a>
+        <a href="anime.html">anime</a>
+        <a href="toiawase.html">information</a>
+      </div>
     </header>
-    <nav>
-      <a href="index.html">home</a>
-      <a href="zikosyoukai.html">profile</a>
-      <a href="ongaku.html">music</a>
-      <a href="dzl.html">stresmer</a>
-      <a href="anime.html">anime</a>
-      <a href="toiawase.html">information</a>
-    </nav>
     <main>
       <h2>私のおすすめアニメ</h2>
       <ul class="anime-list">
@@ -217,5 +293,32 @@
       </ul>
     </main>
     <footer>&copy; anime</footer>
+    <script>
+      // ハンバーガーメニューの開閉（基準と同一）
+      const hamburger = document.getElementById("hamburger-menu");
+      const navMobile = document.getElementById("nav-mobile");
+      if (hamburger && navMobile) {
+        hamburger.addEventListener("click", function () {
+          navMobile.classList.toggle("open");
+          hamburger.classList.toggle("open");
+        });
+        navMobile.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navMobile.classList.remove("open");
+            hamburger.classList.remove("open");
+          });
+        });
+        document.addEventListener("click", function (e) {
+          if (
+            navMobile.classList.contains("open") &&
+            !navMobile.contains(e.target) &&
+            !hamburger.contains(e.target)
+          ) {
+            navMobile.classList.remove("open");
+            hamburger.classList.remove("open");
+          }
+        });
+      }
+    </script>
   </body>
 </html>

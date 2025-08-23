@@ -36,27 +36,28 @@
         letter-spacing: 0.06em;
         margin: 0.2em 0 0.3em 0;
       }
-      nav {
+      nav.desktop-nav {
         text-align: center;
         margin: 24px 0;
       }
       nav a {
         color: #90caf9;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.8); /* ハンバーガーと同じ透明度 */
         text-decoration: none;
         margin: 0 18px;
         font-weight: bold;
         font-size: 1.15em;
         padding: 0.8em 2em;
-        border-radius: 32px;
-        box-shadow: 0 2px 12px 0 #b3d8ff22, 0 0 24px 2px #fff6;
+        border-radius: 50px; /* 丸みを強めて統一 */
+        box-shadow: 0 2px 8px #b3d8ff44; /* ハンバーガーと同じ影 */
         letter-spacing: 0.04em;
-        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
       }
       nav a:hover {
-        background: #e3f2fd;
-        color: #fff;
-        box-shadow: 0 4px 24px 0 #90caf966, 0 0 40px 6px #fff8;
+        background: rgba(255, 255, 255, 0.9); /* 同系でわずかに強調 */
+        color: #90caf9; /* ハンバーガーの配色に合わせる */
+        box-shadow: 0 3px 12px #b3d8ff66; /* 影を少しだけ強める */
+        transform: translateY(-1px);
       }
       main {
         max-width: 700px;
@@ -161,11 +162,81 @@
       .slider-btn.next {
         right: 0;
       }
+
+      /* ここからハンバーガー（ongaku.html と完全一致） */
+      .hamburger {
+        display: none;
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        width: 38px;
+        height: 38px;
+        z-index: 2001;
+        cursor: pointer;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+      }
+      .hamburger span,
+      .hamburger span:before,
+      .hamburger span:after {
+        display: block;
+        position: absolute;
+        width: 32px;
+        height: 4px;
+        background: #90caf9;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      .hamburger span {
+        top: 17px;
+        left: 3px;
+      }
+      .hamburger span:before {
+        content: "";
+        top: -10px;
+        left: 0;
+      }
+      .hamburger span:after {
+        content: "";
+        top: 10px;
+        left: 0;
+      }
+
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70vw;
+        max-width: 320px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -4px 0 32px #b3d8ff44;
+        z-index: 2000;
+        padding: 80px 24px 24px 24px;
+        gap: 1.5em;
+        border-radius: 0 0 36px 36px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      .nav-mobile.open {
+        display: flex;
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
       @media (max-width: 600px) {
         header,
         footer {
           padding: 1.2rem;
           border-radius: 0;
+        }
+        nav.desktop-nav {
+          display: none;
         }
         nav a {
           display: block;
@@ -193,6 +264,57 @@
         .slider {
           width: 270vw;
         }
+        .hamburger {
+          display: flex;
+        }
+        /* ongaku.html と同じ挙動（スライドイン） */
+        .nav-mobile {
+          display: none;
+          transform: translateX(100%);
+          opacity: 0;
+          pointer-events: none;
+        }
+        .nav-mobile.open {
+          display: flex;
+          transform: translateX(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+        /* モバイルメニューのリンク（hover含む） */
+        .nav-mobile a {
+          color: #90caf9;
+          background: rgba(255, 255, 255, 0.9);
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 1.15em;
+          padding: 0.8em 2em;
+          border-radius: 36px;
+          box-shadow: 0 2px 8px #b3d8ff44;
+          letter-spacing: 0.04em;
+          transition: background 0.2s, color 0.2s, box-shadow 0.2s,
+            transform 0.2s;
+          width: 100%;
+          text-align: center;
+        }
+        .nav-mobile a:hover {
+          background: rgba(255, 255, 255, 0.98);
+          box-shadow: 0 3px 12px #b3d8ff66;
+          transform: translateY(-1px);
+        }
+      }
+      /* ハンバーガー開閉アニメ */
+      .hamburger.open span {
+        transform: rotate(45deg);
+        background: #64b5f6;
+      }
+      .hamburger.open span:before {
+        top: 0;
+        transform: rotate(90deg);
+        background: #64b5f6;
+      }
+      .hamburger.open span:after {
+        opacity: 0;
+        transform: translateX(-8px);
       }
     </style>
   </head>
@@ -201,7 +323,10 @@
       style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000"
     >
       <h1 style="margin-bottom: 0.5em">about me</h1>
-      <nav>
+      <div class="hamburger" id="hamburger-menu">
+        <span></span>
+      </div>
+      <nav class="desktop-nav">
         <a href="index.html">home</a>
         <a href="zikosyoukai.html">profile</a>
         <a href="ongaku.html">music</a>
@@ -209,16 +334,20 @@
         <a href="anime.html">anime</a>
         <a href="toiawase.html">information</a>
       </nav>
+      <div class="nav-mobile" id="nav-mobile">
+        <a href="index.html">home</a>
+        <a href="zikosyoukai.html">profile</a>
+        <a href="ongaku.html">music</a>
+        <a href="dzl.html">streamer</a>
+        <a href="anime.html">anime</a>
+        <a href="toiawase.html">information</a>
+      </div>
     </header>
-    <main style="padding-top: 180px">
+    <main>
       <section id="profile">
-        <h2>MY</h2>
+        <h2>PROFILE</h2>
         <div class="slider-container">
           <div class="slider">
-            <img
-              src="https://jp-prod.asyncgw.teams.microsoft.com/v1/objects/0-wjp-d1-2b47218c9b0a4ac1ffd594f5895b0b60/views/imgpsh_fullsize"
-              alt="プロフィール写真1"
-            />
             <img
               src="https://jp-prod.asyncgw.teams.microsoft.com/v1/objects/0-wjp-d2-7687c9e8ec93c8ef28a0d22227736fbe/views/imgpsh_fullsize"
               alt="プロフィール写真2"
@@ -246,25 +375,52 @@
     </footer>
     <script src="js/scripts.js"></script>
     <script>
-      (function() {
-        const slider = document.querySelector('.slider');
-        const images = document.querySelectorAll('.slider img');
-        const prevBtn = document.querySelector('.slider-btn.prev');
-        const nextBtn = document.querySelector('.slider-btn.next');
+      (function () {
+        const slider = document.querySelector(".slider");
+        const images = document.querySelectorAll(".slider img");
+        const prevBtn = document.querySelector(".slider-btn.prev");
+        const nextBtn = document.querySelector(".slider-btn.next");
         let current = 0;
         function updateSlider() {
           slider.style.transform = `translateX(${-current * 320}px)`;
         }
-        prevBtn.addEventListener('click', () => {
+        prevBtn.addEventListener("click", () => {
           current = (current - 1 + images.length) % images.length;
           updateSlider();
         });
-        nextBtn.addEventListener('click', () => {
+        nextBtn.addEventListener("click", () => {
           current = (current + 1) % images.length;
           updateSlider();
         });
         updateSlider();
       })();
+      // ハンバーガーメニューの開閉
+      const hamburger = document.getElementById("hamburger-menu");
+      const navMobile = document.getElementById("nav-mobile");
+      if (hamburger && navMobile) {
+        hamburger.addEventListener("click", function (e) {
+          navMobile.classList.toggle("open");
+          hamburger.classList.toggle("open");
+        });
+        // メニュークリックで自動的に閉じる
+        navMobile.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navMobile.classList.remove("open");
+            hamburger.classList.remove("open");
+          });
+        });
+        // メニュー外クリックで自動的に閉じる
+        document.addEventListener("click", function (e) {
+          if (
+            navMobile.classList.contains("open") &&
+            !navMobile.contains(e.target) &&
+            !hamburger.contains(e.target)
+          ) {
+            navMobile.classList.remove("open");
+            hamburger.classList.remove("open");
+          }
+        });
+      }
     </script>
   </body>
 </html>

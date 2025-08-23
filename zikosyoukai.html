@@ -22,37 +22,111 @@
         border-bottom-left-radius: 48px;
         border-bottom-right-radius: 48px;
         box-shadow: 0 6px 32px 0 #b3d8ff33, 0 0 60px 10px #fff8;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
       }
       header h1 {
-        font-size: 3.5em;
-        font-weight: 700;
-        letter-spacing: 0.08em;
+        font-size: 3.2em;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        margin: 0.2em 0 0.3em 0;
         color: #90caf9;
-        text-shadow: 0 2px 16px #b3d8ff44, 0 0 32px #fff8;
-        margin: 0;
+        text-shadow: none;
       }
-      nav {
+
+      nav.desktop-nav {
         text-align: center;
         margin: 24px 0;
       }
-      nav a {
+      nav.desktop-nav a {
         color: #90caf9;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.8);
         text-decoration: none;
         margin: 0 18px;
         font-weight: bold;
         font-size: 1.15em;
         padding: 0.8em 2em;
-        border-radius: 32px;
-        box-shadow: 0 2px 12px 0 #b3d8ff22, 0 0 24px 2px #fff6;
+        border-radius: 50px;
+        box-shadow: 0 2px 8px #b3d8ff44;
         letter-spacing: 0.04em;
-        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
       }
-      nav a:hover {
-        background: #e3f2fd;
-        color: #fff;
-        box-shadow: 0 4px 24px 0 #90caf966, 0 0 40px 6px #fff8;
+      nav.desktop-nav a:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #90caf9;
+        box-shadow: 0 3px 12px #b3d8ff66;
       }
+
+      /* hamburger（基準と完全一致） */
+      .hamburger {
+        display: none;
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        width: 38px;
+        height: 38px;
+        z-index: 2001;
+        cursor: pointer;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+      }
+      .hamburger span,
+      .hamburger span:before,
+      .hamburger span:after {
+        display: block;
+        position: absolute;
+        width: 32px;
+        height: 4px;
+        background: #90caf9;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      .hamburger span {
+        top: 17px;
+        left: 3px;
+      }
+      .hamburger span:before {
+        content: "";
+        top: -10px;
+        left: 0;
+      }
+      .hamburger span:after {
+        content: "";
+        top: 10px;
+        left: 0;
+      }
+
+      /* nav-mobile（基準と完全一致） */
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70vw;
+        max-width: 320px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -4px 0 32px #b3d8ff44;
+        z-index: 2000;
+        padding: 80px 24px 24px 24px;
+        gap: 1.5em;
+        border-radius: 0 0 36px 36px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      .nav-mobile.open {
+        display: flex;
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
       main {
         max-width: 700px;
         margin: 48px auto 80px auto;
@@ -62,90 +136,112 @@
         box-shadow: 0 4px 32px 0 #b3d8ff22, 0 0 60px 10px #fff8;
         color: #7fa7c7;
         font-weight: 400;
+        padding-top: 180px;
       }
-      h2 {
-        color: #90caf9;
-        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
-          "Yu Gothic", sans-serif;
-        font-size: 2em;
-        margin-bottom: 24px;
-        font-weight: 400;
-        text-align: center;
-      }
-      h3 {
-        color: #90caf9;
-        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
-          "Yu Gothic", sans-serif;
-        font-size: 1.5em;
-        margin-bottom: 16px;
-        text-align: left;
-        font-weight: 400;
-      }
-      section {
-        background: rgba(255, 255, 255, 0.98);
-        border-radius: 24px;
-        box-shadow: 0 2px 16px 0 #b3d8ff22, 0 0 24px 2px #fff6;
-        padding: 24px;
-        margin-bottom: 32px;
-      }
-      p {
-        color: #7fa7c7;
-        font-weight: 400;
-      }
-      footer {
-        background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%);
-        color: #90caf9;
-        text-align: center;
-        padding: 2.5rem 0;
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-        font-size: 1.1em;
-        letter-spacing: 0.05em;
-        border-radius: 60px 60px 0 0;
-        box-shadow: 0 -8px 32px 8px #b3d8ff44, 0 0 60px 10px #fff8;
-        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
-          "Yu Gothic", sans-serif;
-      }
+
       @media (max-width: 600px) {
         header,
         footer {
           padding: 1.2rem;
           border-radius: 0;
         }
-        nav a {
-          display: block;
-          margin: 0.7rem 0;
+        nav.desktop-nav {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        /* スライドイン初期状態（基準どおり） */
+        .nav-mobile {
+          display: none;
+          transform: translateX(100%);
+          opacity: 0;
+          pointer-events: none;
+        }
+        .nav-mobile.open {
+          display: flex;
+          transform: translateX(0);
+          opacity: 1;
+          pointer-events: auto;
         }
         main {
           max-width: 98vw;
           padding: 1.2rem 0.7rem;
           border-radius: 30px;
+          padding-top: 160px;
         }
         section {
           border-radius: 18px;
           padding: 1.2rem 0.7rem;
         }
+        /* モバイルリンク hover */
+        .nav-mobile a {
+          color: #90caf9;
+          background: rgba(255, 255, 255, 0.9);
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 1.15em;
+          padding: 0.8em 2em;
+          border-radius: 36px;
+          box-shadow: 0 2px 8px #b3d8ff44;
+          letter-spacing: 0.04em;
+          transition: background 0.2s, color 0.2s, box-shadow 0.2s,
+            transform 0.2s;
+          width: 100%;
+          text-align: center;
+        }
+        .nav-mobile a:hover {
+          background: rgba(255, 255, 255, 0.98);
+          box-shadow: 0 3px 12px #b3d8ff66;
+          transform: translateY(-1px);
+        }
+      }
+      /* ハンバーガー開閉アニメ（基準と一致） */
+      .hamburger.open span {
+        transform: rotate(45deg);
+        background: #64b5f6;
+      }
+      .hamburger.open span:before {
+        top: 0;
+        transform: rotate(90deg);
+        background: #64b5f6;
+      }
+      .hamburger.open span:after {
+        opacity: 0;
+        transform: translateX(-8px);
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>profile</h1>
+    <header
+      style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000"
+    >
+      <h1 style="margin-bottom: 0.5em">profile</h1>
+      <div class="hamburger" id="hamburger-menu"><span></span></div>
+      <nav class="desktop-nav">
+        <a href="index.html">home</a>
+        <a href="zikosyoukai.html">profile</a>
+        <a href="ongaku.html">music</a>
+        <a href="dzl.html">streamer</a>
+        <a href="anime.html">anime</a>
+        <a href="toiawase.html">information</a>
+      </nav>
+      <div class="nav-mobile" id="nav-mobile">
+        <a href="index.html">home</a>
+        <a href="zikosyoukai.html">profile</a>
+        <a href="ongaku.html">music</a>
+        <a href="dzl.html">streamer</a>
+        <a href="anime.html">anime</a>
+        <a href="toiawase.html">information</a>
+      </div>
     </header>
-    <nav>
-      <a href="index.html">home</a>
-      <a href="zikosyoukai.html">profile</a>
-      <a href="ongaku.html">music</a>
-      <a href="dzl.html">stresmer</a>
-      <a href="anime.html">anime</a>
-      <a href="toiawase.html">information</a>
-    </nav>
+    <!-- 旧 nav は統一のため削除 -->
     <main>
+      <!-- ...existing code... -->
       <h2>自己紹介</h2>
       <section
         style="
-          background: rgba (225,225,0,0.98);
+          background: rgba (225, 225, 0, 0.98);
           border-radius: 18px;
           box-shadow: 0 2px 8px rgba(144, 202, 249, 0.06);
           padding: 24px;
@@ -159,7 +255,35 @@
         <p>趣味:音楽鑑賞・アニメ・ゲーム実況動画を見ること。</p>
         <p>好きなアーティスト：Stray Kids、aespa、SEVENTEEN</p>
       </section>
+      <!-- ...existing code... -->
     </main>
     <footer>&copy; profile</footer>
+    <script>
+      // ハンバーガーメニューの開閉（他ページと同一）
+      const hamburger = document.getElementById("hamburger-menu");
+      const navMobile = document.getElementById("nav-mobile");
+      if (hamburger && navMobile) {
+        hamburger.addEventListener("click", function () {
+          navMobile.classList.toggle("open");
+          hamburger.classList.toggle("open");
+        });
+        navMobile.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navMobile.classList.remove("open");
+            hamburger.classList.remove("open");
+          });
+        });
+        document.addEventListener("click", function (e) {
+          if (
+            navMobile.classList.contains("open") &&
+            !navMobile.contains(e.target) &&
+            !hamburger.contains(e.target)
+          ) {
+            navMobile.classList.remove("open");
+            hamburger.classList.remove("open");
+          }
+        });
+      }
+    </script>
   </body>
 </html>
