@@ -24,6 +24,11 @@
         border-bottom-left-radius: 48px;
         border-bottom-right-radius: 48px;
         box-shadow: 0 6px 32px 0 #b3d8ff33, 0 0 60px 10px #fff8;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
       }
       header h1 {
         font-size: 3.2em;
@@ -62,6 +67,7 @@
         box-shadow: 0 4px 32px 0 #b3d8ff22, 0 0 60px 10px #fff8;
         color: #7fa7c7;
         font-weight: 400;
+        padding-top: 180px;
       }
       h2 {
         color: #90caf9;
@@ -137,7 +143,9 @@
     </style>
   </head>
   <body>
-    <header>
+    <header
+      style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000"
+    >
       <nav>
         <a href="index.html">ホーム</a>
         <a href="ongaku.html">音楽</a>
@@ -147,24 +155,26 @@
       </nav>
       <h1>about me</h1>
     </header>
-    <main>
-        <section id="profile">
-            <h2>MY</h2>
-            <p>こんにちは、わたしは[若狹 希海]です。これはわたしの自己紹介サイトです。</p>
-        </section>
-        <section id="hobbies">
-            <h2>HOBBIES</h2>
-            <ul>
-                <li><a href="ongaku.html">音楽鑑賞</a></li>
-                <li><a href="anime.html">アニメ</a></li>
-                <li><a href="dzl.html">動画・配信視聴</a></li>
-            </ul>
-        </section>
+    <main style="padding-top: 180px">
+      <section id="profile">
+        <h2>MY</h2>
+        <p>
+          こんにちは、わたしは[若狹
+          希海]です。これはわたしの自己紹介サイトです。
+        </p>
+      </section>
+      <section id="hobbies">
+        <h2>HOBBIES</h2>
+        <ul>
+          <li><a href="ongaku.html">音楽鑑賞</a></li>
+          <li><a href="anime.html">アニメ</a></li>
+          <li><a href="dzl.html">動画・配信視聴</a></li>
+        </ul>
+      </section>
     </main>
     <footer class="footer">
-        <p>&copy; 2024 わたしの自己紹介サイト</p>
+      <p>&copy; 2024 わたしの自己紹介サイト</p>
     </footer>
     <script src="js/scripts.js"></script>
-</body>
+  </body>
 </html>
-
