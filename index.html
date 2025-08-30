@@ -142,6 +142,17 @@
         margin: 0 10px;
         background: #e3f2fd;
       }
+      /* 画像ホバー時のわずかな拡大 */
+      @media (hover: hover) and (pointer: fine) {
+        .slider img {
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          transform-origin: center;
+        }
+        .slider img:hover {
+          transform: scale(1.04);
+          box-shadow: 0 6px 20px #b3d8ff66;
+        }
+      }
       .slider-btn {
         position: absolute;
         top: 50%;
@@ -316,6 +327,59 @@
         opacity: 0;
         transform: translateX(-8px);
       }
+      /* 画像拡大ライトボックス */
+      .lightbox-overlay {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 3000;
+        padding: 24px;
+      }
+      .lightbox-overlay.open {
+        display: flex;
+      }
+      .lightbox-content {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 12px 40px #0003, 0 0 60px 10px #fff8;
+        max-width: 90vw;
+        max-height: 90vh;
+        padding: 16px;
+        color: #7fa7c7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .lightbox-img {
+        max-width: 80vw;
+        max-height: 70vh;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px #b3d8ff66;
+        background: #e3f2fd;
+      }
+      .lightbox-caption {
+        margin-top: 12px;
+        color: #90caf9;
+        font-weight: 500;
+        text-align: center;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        color: #90caf9;
+        font-size: 1.4em;
+        cursor: pointer;
+        box-shadow: 0 2px 8px #b3d8ff44;
+      }
     </style>
   </head>
   <body>
@@ -349,18 +413,18 @@
         <div class="slider-container">
           <div class="slider">
             <img
-              src="images/photo1.jpeg"
-              alt="プロフィール写真1"
+              src="images/Imagesumikko.jpeg"
+              alt="私のBeReal"
               onerror="this.onerror=null;this.src='https://placehold.co/300x300/EEF7FF/90CAF9?text=Photo+1'"
             />
             <img
-              src="images/Image.jpeg"
-              alt="プロフィール写真2"
+              src="images/Image xst.jpeg"
+              alt="私が好きなカードゲーム"
               onerror="this.onerror=null;this.src='https://placehold.co/300x300/EEF7FF/90CAF9?text=Photo+2'"
             />
             <img
               src="images/Image (1).jpeg"
-              alt="プロフィール写真3"
+              alt="私の地元"
               onerror="this.onerror=null;this.src='https://placehold.co/300x300/EEF7FF/90CAF9?text=Photo+3'"
             />
           </div>
@@ -377,6 +441,22 @@
         </ul>
       </section>
     </main>
+    <!-- 画像拡大用ライトボックス -->
+    <div
+      class="lightbox-overlay"
+      id="lightbox"
+      aria-modal="true"
+      role="dialog"
+      aria-label="画像プレビュー"
+    >
+      <button class="lightbox-close" id="lightbox-close" aria-label="閉じる">
+        ×
+      </button>
+      <div class="lightbox-content">
+        <img class="lightbox-img" id="lightbox-img" alt="" />
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+      </div>
+    </div>
     <footer class="footer">
       <p>&copy; home</p>
     </footer>
@@ -428,6 +508,36 @@
           }
         });
       }
+      // 画像クリックで拡大＆キャプション表示（altを利用）
+      (function () {
+        const overlay = document.getElementById("lightbox");
+        const imgEl = document.getElementById("lightbox-img");
+        const capEl = document.getElementById("lightbox-caption");
+        const closeBtn = document.getElementById("lightbox-close");
+        document.querySelectorAll(".slider img").forEach((img) => {
+          img.style.cursor = "zoom-in";
+          img.addEventListener("click", () => {
+            imgEl.src = img.src;
+            imgEl.alt = img.alt || "";
+            capEl.textContent = img.alt || "";
+            overlay.classList.add("open");
+            document.body.style.overflow = "hidden";
+          });
+        });
+        function closeOverlay() {
+          overlay.classList.remove("open");
+          document.body.style.overflow = "";
+        }
+        closeBtn.addEventListener("click", closeOverlay);
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) closeOverlay();
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && overlay.classList.contains("open")) {
+            closeOverlay();
+          }
+        });
+      })();
     </script>
   </body>
 </html>
