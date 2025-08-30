@@ -97,6 +97,17 @@
         width: 270px !important;
         max-width: 90vw;
       }
+      /* 画像ホバー時のわずかな拡大（ホバー可能デバイスのみ） */
+      @media (hover: hover) and (pointer: fine) {
+        .streamer-list li a img {
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          transform-origin: center;
+        }
+        .streamer-list li a img:hover {
+          transform: scale(1.04);
+          box-shadow: 0 6px 20px #b3d8ff66;
+        }
+      }
       .streamer-title {
         font-size: 2em;
         font-weight: 400;
