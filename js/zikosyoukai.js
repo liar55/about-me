@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', () => {
-    alert('プロフィールページへようこそ！');
-    console.log('プロフィールページへようこそ！');
+window.addEventListener("DOMContentLoaded", () => {
+  alert("プロフィールページへようこそ！");
+  console.log("プロフィールページへようこそ！");
 });

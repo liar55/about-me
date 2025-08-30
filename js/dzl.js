@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', () => {
-    alert('ストリーマーページへようこそ！');
-    console.log('ストリーマーページへようこそ！');
+window.addEventListener("DOMContentLoaded", () => {
+  alert("ストリーマーページへようこそ！");
+  console.log("ストリーマーページへようこそ！");
 });
