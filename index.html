@@ -4,393 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ホーム</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
     <style>
-      body {
-        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
-          "Yu Gothic", "Meiryo", "Arial", sans-serif;
-        background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        color: #7fa7c7;
-        font-weight: 400;
-      }
-      header {
-        background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%);
-        color: #90caf9;
-        padding: 4% 0 2.5% 0;
-        text-align: center;
-        border-bottom-left-radius: 48px;
-        border-bottom-right-radius: 48px;
-        box-shadow: 0 6px 32px 0 #b3d8ff33, 0 0 60px 10px #fff8;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-      }
-      header h1 {
-        font-size: 3.2em;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        margin: 0.2em 0 0.3em 0;
-      }
-      nav.desktop-nav {
-        text-align: center;
-        margin: 24px 0;
-      }
-      nav a {
-        color: #90caf9;
-        background: rgba(255, 255, 255, 0.8); /* ハンバーガーと同じ透明度 */
-        text-decoration: none;
-        margin: 0 18px;
-        font-weight: bold;
-        font-size: 1.15em;
-        padding: 0.8em 2em;
-        border-radius: 50px; /* 丸みを強めて統一 */
-        box-shadow: 0 2px 8px #b3d8ff44; /* ハンバーガーと同じ影 */
-        letter-spacing: 0.04em;
-        transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
-      }
-      nav a:hover {
-        background: #e3f2fd;
-        color: #fff;
-        box-shadow: 0 4px 24px 0 #90caf966, 0 0 40px 6px #fff8;
-        transform: translateY(-1px);
-      }
-      main {
-        max-width: 700px;
-        margin: 180px auto 80px auto; /* 上マージンを48px→180px に変更 */
-        background: rgba(255, 255, 255, 0.98);
-        padding: 36px; /* padding-top:180px を削除し通常の余白に */
-        border-radius: 36px;
-        box-shadow: 0 4px 32px 0 #b3d8ff22, 0 0 60px 10px #fff8;
-        color: #7fa7c7;
-        font-weight: 400;
-      }
-      h2 {
-        color: #90caf9;
-        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
-          "Yu Gothic", sans-serif;
-        font-size: 2em;
-        margin-bottom: 24px;
-        font-weight: 400;
-        text-align: center; /* 追加: 中央寄せ統一 */
-      }
-      section {
-        background: rgba(255, 255, 255, 0.98);
-        border-radius: 36px;
-        box-shadow: 0 4px 32px 0 #b3d8ff22, 0 0 60px 10px #fff8;
-        padding: 2.5rem 2rem;
-        margin-bottom: 2.5rem;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      ul[style] li a {
-        color: #90caf9;
-        background: rgba(255, 255, 255, 0.95);
-        font-weight: 400;
-        font-size: 1.1em;
-        padding: 0.8em 2em;
-        border-radius: 32px;
-        box-shadow: 0 2px 12px 0 #b3d8ff22, 0 0 24px 2px #fff6;
-        letter-spacing: 0.04em;
-        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-        display: inline-block;
-        margin-bottom: 8px;
-      }
-      ul[style] li a:hover {
-        background: #e3f2fd;
-        color: #fff;
-        box-shadow: 0 4px 24px 0 #90caf966, 0 0 40px 6px #fff8;
-      }
-      footer {
-        background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%);
-        color: #90caf9;
-        text-align: center;
-        padding: 2.5rem 0;
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-        font-size: 1.1em;
-        letter-spacing: 0.05em;
-        border-radius: 60px 60px 0 0;
-        box-shadow: 0 -8px 32px 8px #b3d8ff44, 0 0 60px 10px #fff8;
-        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
-          "Yu Gothic", sans-serif;
-      }
-      .slider-container {
-        position: relative;
-        width: 320px;
-        margin: 0 auto 1.5em auto;
-        height: 300px;
-        overflow: hidden;
-      }
-      .slider {
-        display: flex;
-        transition: transform 0.5s cubic-bezier(0.77, 0, 0.18, 1);
-        width: 960px;
-      }
-      .slider img {
-        width: 300px;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 18px;
-        box-shadow: 0 2px 8px #b3d8ff44;
-        margin: 0 10px;
-        background: #e3f2fd;
-      }
-      /* 画像ホバー時のわずかな拡大 */
-      @media (hover: hover) and (pointer: fine) {
-        .slider img {
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
-          transform-origin: center;
-        }
-        .slider img:hover {
-          transform: scale(1.04);
-          box-shadow: 0 6px 20px #b3d8ff66;
-        }
-      }
-      .slider-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.8);
-        border: none;
-        border-radius: 50%;
-        width: 44px;
-        height: 44px;
-        font-size: 2em;
-        color: #90caf9;
-        cursor: pointer;
-        box-shadow: 0 2px 8px #b3d8ff44;
-      }
-      .slider-btn.prev {
-        left: 0;
-      }
-      .slider-btn.next {
-        right: 0;
-      }
-
-      /* ここからハンバーガー（ongaku.html と完全一致） */
-      .hamburger {
-        display: none;
-        position: absolute;
-        top: 18px;
-        right: 24px;
-        width: 38px;
-        height: 38px;
-        z-index: 2001;
-        cursor: pointer;
-        background: transparent;
-        border-radius: 0;
-        box-shadow: none;
-        margin: 0;
-      }
-      .hamburger span,
-      .hamburger span:before,
-      .hamburger span:after {
-        display: block;
-        position: absolute;
-        width: 32px;
-        height: 4px;
-        background: #90caf9;
-        border-radius: 2px;
-        transition: 0.3s;
-      }
-      .hamburger span {
-        top: 17px;
-        left: 3px;
-      }
-      .hamburger span:before {
-        content: "";
-        top: -10px;
-        left: 0;
-      }
-      .hamburger span:after {
-        content: "";
-        top: 10px;
-        left: 0;
-      }
-
-      .nav-mobile {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 70vw;
-        max-width: 320px;
-        height: 100vh;
-        background: #fff;
-        box-shadow: -4px 0 32px #b3d8ff44;
-        z-index: 2000;
-        padding: 80px 24px 24px 24px;
-        gap: 1.5em;
-        border-radius: 0 0 36px 36px;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-      }
-      .nav-mobile.open {
-        display: flex;
-        transform: translateX(0);
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      @media (max-width: 600px) {
-        header,
-        footer {
-          padding: 1.2rem;
-          border-radius: 0;
-        }
-        nav.desktop-nav {
-          display: none;
-        }
-        nav a {
-          display: block;
-          margin: 0.7rem 0;
-        }
-        main {
-          max-width: 98vw;
-          padding: 1.2rem 0.7rem;
-          border-radius: 30px;
-        }
-        section {
-          border-radius: 30px;
-          padding: 1.2rem 0.7rem;
-        }
-        .slider-container {
-          width: 98vw;
-          height: 40vw;
-          min-height: 180px;
-        }
-        .slider img {
-          width: 90vw;
-          height: 40vw;
-          min-height: 180px;
-        }
-        .slider {
-          width: 270vw;
-        }
-        .hamburger {
-          display: flex;
-        }
-        /* ongaku.html と同じ挙動（スライドイン） */
-        .nav-mobile {
-          display: none;
-          transform: translateX(100%);
-          opacity: 0;
-          pointer-events: none;
-        }
-        .nav-mobile.open {
-          display: flex;
-          transform: translateX(0);
-          opacity: 1;
-          pointer-events: auto;
-        }
-        /* モバイルメニューのリンク（hover含む） */
-        .nav-mobile a {
-          color: #90caf9;
-          background: rgba(255, 255, 255, 0.9);
-          text-decoration: none;
-          font-weight: bold;
-          font-size: 1.15em;
-          padding: 0.8em 2em;
-          border-radius: 36px;
-          box-shadow: 0 2px 8px #b3d8ff44;
-          letter-spacing: 0.04em;
-          transition: background 0.2s, color 0.2s, box-shadow 0.2s,
-            transform 0.2s;
-          width: 100%;
-          text-align: center;
-        }
-        .nav-mobile a:hover {
-          background: rgba(255, 255, 255, 0.98);
-          box-shadow: 0 3px 12px #b3d8ff66;
-          transform: translateY(-1px);
-        }
-      }
-      /* ハンバーガー開閉アニメ */
-      .hamburger.open span {
-        transform: rotate(45deg);
-        background: #64b5f6;
-      }
-      .hamburger.open span:before {
-        top: 0;
-        transform: rotate(90deg);
-        background: #64b5f6;
-      }
-      .hamburger.open span:after {
-        opacity: 0;
-        transform: translateX(-8px);
-      }
-      /* 画像拡大ライトボックス */
-      .lightbox-overlay {
-        position: fixed;
-        inset: 0;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 3000;
-        padding: 24px;
-      }
-      .lightbox-overlay.open {
-        display: flex;
-      }
-      .lightbox-content {
-        background: #fff;
-        border-radius: 18px;
-        box-shadow: 0 12px 40px #0003, 0 0 60px 10px #fff8;
-        max-width: 90vw;
-        max-height: 90vh;
-        padding: 16px;
-        color: #7fa7c7;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .lightbox-img {
-        max-width: 80vw;
-        max-height: 70vh;
-        border-radius: 12px;
-        box-shadow: 0 2px 12px #b3d8ff66;
-        background: #e3f2fd;
-      }
-      .lightbox-caption {
-        margin-top: 12px;
-        color: #90caf9;
-        font-weight: 500;
-        text-align: center;
-      }
-      .lightbox-close {
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        background: rgba(255, 255, 255, 0.9);
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        color: #90caf9;
-        font-size: 1.4em;
-        cursor: pointer;
-        box-shadow: 0 2px 8px #b3d8ff44;
-      }
+      /* ページ固有スタイルが必要ならここに */
     </style>
   </head>
   <body>
-    <header
-      style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000"
-    >
-      <h1 style="margin-bottom: 0.5em">about me</h1>
-      <div class="hamburger" id="hamburger-menu">
+    <header class="site-header">
+      <h1>about me</h1>
+      <button class="hamburger" id="hamburger-menu" aria-label="メニュー">
         <span></span>
-      </div>
-      <nav class="desktop-nav">
+      </button>
+      <nav class="desktop-nav" aria-label="メインメニュー">
         <a href="index.html">home</a>
         <a href="zikosyoukai.html">profile</a>
         <a href="ongaku.html">music</a>
@@ -398,7 +27,7 @@
         <a href="anime.html">anime</a>
         <a href="toiawase.html">information</a>
       </nav>
-      <div class="nav-mobile" id="nav-mobile">
+      <div class="nav-mobile" id="nav-mobile" aria-label="モバイルメニュー">
         <a href="index.html">home</a>
         <a href="zikosyoukai.html">profile</a>
         <a href="ongaku.html">music</a>
@@ -414,26 +43,28 @@
           <div class="slider">
             <img
               src="images/Imagesumikko.jpeg"
-              alt="私のBeReal"
+              alt="BeReal"
+              data-caption="BeReal"
               onerror="this.onerror=null;this.src='https://placehold.co/300x300/EEF7FF/90CAF9?text=Photo+1'"
             />
             <img
               src="images/Image xst.jpeg"
-              alt="私が好きなカードゲーム"
+              alt="Xross Stars"
+              data-caption="Xross Stars"
               onerror="this.onerror=null;this.src='https://placehold.co/300x300/EEF7FF/90CAF9?text=Photo+2'"
             />
             <img
               src="images/Image (1).jpeg"
-              alt="私の地元"
+              alt="local"
+              data-caption="local"
               onerror="this.onerror=null;this.src='https://placehold.co/300x300/EEF7FF/90CAF9?text=Photo+3'"
             />
           </div>
-          <button class="slider-btn prev">&#60;</button>
-          <button class="slider-btn next">&#62;</button>
+          <button class="slider-btn prev" aria-label="前の画像">&#60;</button>
+          <button class="slider-btn next" aria-label="次の画像">&#62;</button>
         </div>
       </section>
     </main>
-    <!-- 画像拡大用ライトボックス -->
     <div
       class="lightbox-overlay"
       id="lightbox"
@@ -441,95 +72,15 @@
       role="dialog"
       aria-label="画像プレビュー"
     >
-      <button class="lightbox-close" id="lightbox-close" aria-label="閉じる">
-        ×
-      </button>
-      <div class="lightbox-content">
-        <img class="lightbox-img" id="lightbox-img" alt="" />
-        <div class="lightbox-caption" id="lightbox-caption"></div>
+      <div class="lightbox-content" role="document">
+        <button class="lightbox-close" aria-label="閉じる">×</button>
+        <img class="lightbox-img" alt="" />
+        <div class="lightbox-caption"></div>
       </div>
     </div>
-    <footer class="footer">
+    <footer class="site-footer">
       <p>&copy; home</p>
     </footer>
     <script src="js/scripts.js"></script>
-    <script>
-      (function () {
-        const slider = document.querySelector(".slider");
-        const images = document.querySelectorAll(".slider img");
-        const prevBtn = document.querySelector(".slider-btn.prev");
-        const nextBtn = document.querySelector(".slider-btn.next");
-        let current = 0;
-        function updateSlider() {
-          slider.style.transform = `translateX(${-current * 320}px)`;
-        }
-        prevBtn.addEventListener("click", () => {
-          current = (current - 1 + images.length) % images.length;
-          updateSlider();
-        });
-        nextBtn.addEventListener("click", () => {
-          current = (current + 1) % images.length;
-          updateSlider();
-        });
-        updateSlider();
-      })();
-      // ハンバーガーメニューの開閉
-      const hamburger = document.getElementById("hamburger-menu");
-      const navMobile = document.getElementById("nav-mobile");
-      if (hamburger && navMobile) {
-        hamburger.addEventListener("click", function (e) {
-          navMobile.classList.toggle("open");
-          hamburger.classList.toggle("open");
-        });
-        // メニュークリックで自動的に閉じる
-        navMobile.querySelectorAll("a").forEach((link) => {
-          link.addEventListener("click", () => {
-            navMobile.classList.remove("open");
-            hamburger.classList.remove("open");
-          });
-        });
-        // メニュー外クリックで自動的に閉じる
-        document.addEventListener("click", function (e) {
-          if (
-            navMobile.classList.contains("open") &&
-            !navMobile.contains(e.target) &&
-            !hamburger.contains(e.target)
-          ) {
-            navMobile.classList.remove("open");
-            hamburger.classList.remove("open");
-          }
-        });
-      }
-      // 画像クリックで拡大＆キャプション表示（altを利用）
-      (function () {
-        const overlay = document.getElementById("lightbox");
-        const imgEl = document.getElementById("lightbox-img");
-        const capEl = document.getElementById("lightbox-caption");
-        const closeBtn = document.getElementById("lightbox-close");
-        document.querySelectorAll(".slider img").forEach((img) => {
-          img.style.cursor = "zoom-in";
-          img.addEventListener("click", () => {
-            imgEl.src = img.src;
-            imgEl.alt = img.alt || "";
-            capEl.textContent = img.alt || "";
-            overlay.classList.add("open");
-            document.body.style.overflow = "hidden";
-          });
-        });
-        function closeOverlay() {
-          overlay.classList.remove("open");
-          document.body.style.overflow = "";
-        }
-        closeBtn.addEventListener("click", closeOverlay);
-        overlay.addEventListener("click", (e) => {
-          if (e.target === overlay) closeOverlay();
-        });
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape" && overlay.classList.contains("open")) {
-            closeOverlay();
-          }
-        });
-      })();
-    </script>
   </body>
 </html>

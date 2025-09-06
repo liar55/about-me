@@ -4,276 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>好きな音楽紹介</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
-    <style>
-      body {
-        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
-          "Yu Gothic", "Meiryo", "Arial", sans-serif;
-        background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        color: #7fa7c7;
-        font-weight: 400;
-      }
-      header {
-        background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%);
-        color: #90caf9;
-        padding: 4% 0 2.5% 0;
-        text-align: center;
-        border-bottom-left-radius: 48px;
-        border-bottom-right-radius: 48px;
-        box-shadow: 0 6px 32px 0 #b3d8ff33, 0 0 60px 10px #fff8;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-      }
-      header h1 {
-        font-size: 3.2em;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        margin: 0.2em 0 0.3em 0;
-      }
-      .hamburger {
-        display: none;
-        position: absolute;
-        top: 18px;
-        right: 24px;
-        width: 38px;
-        height: 38px;
-        z-index: 2001;
-        cursor: pointer;
-        background: transparent;
-        border-radius: 0;
-        box-shadow: none;
-        margin: 0;
-      }
-      .hamburger span,
-      .hamburger span:before,
-      .hamburger span:after {
-        display: block;
-        position: absolute;
-        width: 32px;
-        height: 4px;
-        background: #90caf9;
-        border-radius: 2px;
-        transition: 0.3s;
-      }
-      .hamburger span {
-        top: 17px;
-        left: 3px;
-      }
-      .hamburger span:before {
-        content: "";
-        top: -10px;
-        left: 0;
-      }
-      .hamburger span:after {
-        content: "";
-        top: 10px;
-        left: 0;
-      }
-      nav.desktop-nav {
-        text-align: center;
-        margin: 24px 0;
-      }
-      nav a {
-        color: #90caf9;
-        background: rgba(255, 255, 255, 0.95);
-        text-decoration: none;
-        margin: 0 18px;
-        font-weight: bold;
-        font-size: 1.15em;
-        padding: 0.8em 2em;
-        border-radius: 32px;
-        box-shadow: 0 2px 12px 0 #b3d8ff22, 0 0 24px 2px #fff6;
-        letter-spacing: 0.04em;
-        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      }
-      nav a:hover {
-        background: #e3f2fd;
-        color: #fff;
-        box-shadow: 0 4px 24px 0 #90caf966, 0 0 40px 6px #fff8;
-        transform: translateY(-1px);
-      }
-      .nav-mobile {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 70vw;
-        max-width: 320px;
-        height: 100vh;
-        background: #fff;
-        box-shadow: -4px 0 32px #b3d8ff44;
-        z-index: 2000;
-        padding: 80px 24px 24px 24px;
-        gap: 1.5em;
-        border-radius: 0 0 36px 36px;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-      }
-      .nav-mobile.open {
-        display: flex;
-        transform: translateX(0);
-        opacity: 1;
-        pointer-events: auto;
-      }
-      main {
-        max-width: 700px;
-        margin: 180px auto 80px auto; /* 以前: 48px -> ヘッダー下に十分な余白を確保 */
-        background: rgba(255, 255, 255, 0.98);
-        padding: 36px;
-        border-radius: 36px;
-        box-shadow: 0 4px 32px 0 #b3d8ff22, 0 0 60px 10px #fff8;
-        color: #7fa7c7;
-        font-weight: 400;
-      }
-      h2 {
-        color: #90caf9;
-        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
-          "Yu Gothic", sans-serif;
-        font-size: 2em;
-        margin-bottom: 24px;
-        font-weight: 400;
-        text-align: center; /* 追加: 中央寄せ */
-      }
-      .music-intro {
-        background: rgba(255, 255, 255, 0.98);
-        border-radius: 24px;
-        box-shadow: 0 2px 16px 0 #b3d8ff22, 0 0 24px 2px #fff6;
-        padding: 24px;
-        margin-bottom: 32px;
-      }
-      .music-intro a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .music-intro a img {
-        width: 270px !important;
-        max-width: 90vw;
-      }
-      /* 画像ホバー時のわずかな拡大（ホバー可能デバイスのみ） */
-      @media (hover: hover) and (pointer: fine) {
-        .music-intro a img {
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
-          transform-origin: center;
-        }
-        .music-intro a img:hover {
-          transform: scale(1.04);
-          box-shadow: 0 6px 20px #b3d8ff66;
-        }
-      }
-      .music-intro p {
-        color: #7fa7c7;
-        font-size: 1.05em;
-        font-weight: 400;
-      }
-      .music-intro iframe {
-        border-radius: 16px;
-        box-shadow: 0 2px 12px rgba(144, 202, 249, 0.12);
-      }
-      footer {
-        background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%);
-        color: #90caf9;
-        text-align: center;
-        padding: 2.5rem 0;
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-        font-size: 1.1em;
-        letter-spacing: 0.05em;
-        border-radius: 60px 60px 0 0;
-        box-shadow: 0 -8px 32px 8px #b3d8ff44, 0 0 60px 10px #fff8;
-        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
-          "Yu Gothic", sans-serif;
-      }
-      @media (max-width: 600px) {
-        header,
-        footer {
-          padding: 1.2rem;
-          border-radius: 0;
-        }
-        nav.desktop-nav {
-          display: none;
-        }
-        nav a {
-          display: block;
-          margin: 0.7rem 0;
-        }
-        main {
-          max-width: 98vw;
-          padding: 1.2rem 0.7rem;
-          border-radius: 30px;
-        }
-        .music-intro {
-          border-radius: 18px;
-          padding: 1.2rem 0.7rem;
-        }
-        .hamburger {
-          display: flex;
-        }
-        .nav-mobile {
-          display: none;
-          transform: translateX(100%);
-          opacity: 0;
-          pointer-events: none;
-        }
-        .nav-mobile.open {
-          display: flex;
-          transform: translateX(0);
-          opacity: 1;
-          pointer-events: auto;
-        }
-        .nav-mobile a {
-          color: #90caf9;
-          background: rgba(255, 255, 255, 0.9);
-          text-decoration: none;
-          font-weight: bold;
-          font-size: 1.15em;
-          padding: 0.8em 2em;
-          border-radius: 36px;
-          box-shadow: 0 2px 8px #b3d8ff44;
-          letter-spacing: 0.04em;
-          transition: background 0.2s, color 0.2s, box-shadow 0.2s,
-            transform 0.2s;
-          width: 100%;
-          text-align: center;
-        }
-        .nav-mobile a:hover {
-          background: rgba(255, 255, 255, 0.98);
-          box-shadow: 0 3px 12px #b3d8ff66;
-          transform: translateY(-1px);
-        }
-      }
-      .hamburger.open span {
-        transform: rotate(45deg);
-        background: #64b5f6;
-      }
-      .hamburger.open span:before {
-        top: 0;
-        transform: rotate(90deg);
-        background: #64b5f6;
-      }
-      .hamburger.open span:after {
-        opacity: 0;
-        transform: translateX(-8px);
-      }
-    </style>
   </head>
   <body>
-    <header
-      style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000"
-    >
-      <h1 style="margin-bottom: 0.5em">music</h1>
-      <div class="hamburger" id="hamburger-menu">
+    <header class="site-header">
+      <h1>music</h1>
+      <button class="hamburger" id="hamburger-menu" aria-label="メニュー">
         <span></span>
-      </div>
-      <nav class="desktop-nav">
+      </button>
+      <nav class="desktop-nav" aria-label="メインメニュー">
         <a href="index.html">home</a>
         <a href="zikosyoukai.html">profile</a>
         <a href="ongaku.html">music</a>
@@ -281,7 +24,7 @@
         <a href="anime.html">anime</a>
         <a href="toiawase.html">information</a>
       </nav>
-      <div class="nav-mobile" id="nav-mobile">
+      <div class="nav-mobile" id="nav-mobile" aria-label="モバイルメニュー">
         <a href="index.html">home</a>
         <a href="zikosyoukai.html">profile</a>
         <a href="ongaku.html">music</a>
@@ -291,7 +34,7 @@
       </div>
     </header>
     <main>
-      <h2>私のおすすめアーティスト</h2>
+      <h2>My favorite artist</h2>
       <section class="music-intro">
         <h2>Stray Kids</h2>
         <a
@@ -302,7 +45,7 @@
           <img
             src="https://kasioda.com/wp-content/uploads/2022/11/skz3.jpeg"
             alt="Stray Kids チャンネル"
-            style="width: 200px"
+            class="lightbox-target"
           />
         </a>
       </section>
@@ -316,7 +59,7 @@
           <img
             src="https://idolgoods.jp/wp-content/uploads/2024/06/unnamed-1.jpg"
             alt="aespa チャンネル"
-            style="width: 200px"
+            class="lightbox-target"
           />
         </a>
       </section>
@@ -330,42 +73,12 @@
           <img
             src="https://www.lifestorytown.jp/wp-content/uploads/2021/09/seventeen-semicolon-homerun-e1631711617147.jpg"
             alt="SEVENTEEN チャンネル"
-            style="width: 200px"
+            class="lightbox-target"
           />
         </a>
       </section>
     </main>
-    <footer>
-      <p>&copy; music</p>
-    </footer>
-    <script>
-      // ハンバーガーメニューの開閉
-      const hamburger = document.getElementById("hamburger-menu");
-      const navMobile = document.getElementById("nav-mobile");
-      if (hamburger && navMobile) {
-        hamburger.addEventListener("click", function (e) {
-          navMobile.classList.toggle("open");
-          hamburger.classList.toggle("open");
-        });
-        // メニュークリックで自動的に閉じる
-        navMobile.querySelectorAll("a").forEach((link) => {
-          link.addEventListener("click", () => {
-            navMobile.classList.remove("open");
-            hamburger.classList.remove("open");
-          });
-        });
-        // メニュー外クリックで自動的に閉じる
-        document.addEventListener("click", function (e) {
-          if (
-            navMobile.classList.contains("open") &&
-            !navMobile.contains(e.target) &&
-            !hamburger.contains(e.target)
-          ) {
-            navMobile.classList.remove("open");
-            hamburger.classList.remove("open");
-          }
-        });
-      }
-    </script>
+    <footer class="site-footer"><p>&copy; music</p></footer>
+    <script src="js/scripts.js"></script>
   </body>
 </html>
