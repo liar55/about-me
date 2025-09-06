@@ -129,14 +129,13 @@
 
       main {
         max-width: 700px;
-        margin: 48px auto 80px auto;
+        margin: 180px auto 80px auto; /* 48px -> 180px */
         background: rgba(255, 255, 255, 0.98);
-        padding: 36px;
+        padding: 36px; /* padding-top:180px を削除 */
         border-radius: 36px;
         box-shadow: 0 4px 32px 0 #b3d8ff22, 0 0 60px 10px #fff8;
         color: #7fa7c7;
         font-weight: 400;
-        padding-top: 180px;
       }
 
       @media (max-width: 600px) {
@@ -168,7 +167,7 @@
           max-width: 98vw;
           padding: 1.2rem 0.7rem;
           border-radius: 30px;
-          padding-top: 160px;
+          padding-top: 160px; /* モバイルは既存の調整を維持するなら残す：必要なら調整可 */
         }
         section {
           border-radius: 18px;
