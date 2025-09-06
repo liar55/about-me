@@ -594,3 +594,7 @@ h1 {
   margin-top: 0.5em;
   letter-spacing: 0.04em; /* 見出しと同様の字間 */
 }
+
+body.nav-open {
+  overflow: hidden; /* モバイルメニュー開時に背面スクロール防止 */
+}

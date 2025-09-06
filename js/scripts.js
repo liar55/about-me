@@ -47,12 +47,14 @@ window.addEventListener("DOMContentLoaded", () => {
     const open = navMobile.classList.toggle("open");
     hamburger.classList.toggle("open", open);
     hamburger.setAttribute("aria-expanded", open ? "true" : "false");
+    document.body.classList.toggle("nav-open", open); // 追加
   });
   navMobile.querySelectorAll("a").forEach((a) => {
     a.addEventListener("click", () => {
       navMobile.classList.remove("open");
       hamburger.classList.remove("open");
       hamburger.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("nav-open"); // 追加
     });
   });
   document.addEventListener("click", (e) => {
@@ -64,6 +66,7 @@ window.addEventListener("DOMContentLoaded", () => {
       navMobile.classList.remove("open");
       hamburger.classList.remove("open");
       hamburger.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("nav-open"); // 追加
     }
   });
 })();
