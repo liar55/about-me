@@ -11,7 +11,7 @@
         margin: 0;
         padding: 0;
         min-height: 100vh;
-        color: #7fa7c7;
+        color: #7fa7c7; /* 他ページと同じ本文色に統一 (#90caf9 から変更) */
         font-weight: 400;
       }
       header {
@@ -35,6 +35,15 @@
         margin: 0.2em 0 0.3em 0;
         color: #90caf9;
         text-shadow: none;
+      }
+      /* 追加: h2 を中央寄せ + 余白調整 */
+      h2 {
+        text-align: center;
+        font-size: 2.4em;
+        letter-spacing: 0.08em;
+        margin: 0 0 0.8em;
+        font-weight: 600;
+        color: #90caf9; /* 追加: 他ページ同様のカラー */
       }
 
       nav.desktop-nav {
@@ -127,15 +136,43 @@
         pointer-events: auto;
       }
 
+      :root {
+        --header-extra-space: 40px;
+      }
+
       main {
         max-width: 700px;
-        margin: 180px auto 80px auto; /* 48px -> 180px */
+        margin: 0 auto 80px auto; /* 上部はJSで動的に */
         background: rgba(255, 255, 255, 0.98);
-        padding: 36px; /* padding-top:180px を削除 */
+        padding: 36px;
         border-radius: 36px;
         box-shadow: 0 4px 32px 0 #b3d8ff22, 0 0 60px 10px #fff8;
         color: #7fa7c7;
         font-weight: 400;
+        padding-bottom: 200px; /* フッターかぶり回避 */
+      }
+      h1,
+      h2,
+      main,
+      main * {
+        scroll-margin-top: calc(var(--dynamic-header-height, 220px) + 20px);
+      }
+
+      /* index.html と同じ footer スタイル */
+      footer {
+        background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%);
+        color: #90caf9;
+        text-align: center;
+        padding: 2.5rem 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        font-size: 1.1em;
+        letter-spacing: 0.05em;
+        border-radius: 60px 60px 0 0;
+        box-shadow: 0 -8px 32px 8px #b3d8ff44, 0 0 60px 10px #fff8;
+        font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
+          "Yu Gothic", sans-serif;
       }
 
       @media (max-width: 600px) {
@@ -150,7 +187,6 @@
         .hamburger {
           display: flex;
         }
-        /* スライドイン初期状態（基準どおり） */
         .nav-mobile {
           display: none;
           transform: translateX(100%);
@@ -165,15 +201,13 @@
         }
         main {
           max-width: 98vw;
-          padding: 1.2rem 0.7rem;
+          padding: 1.2rem 0.7rem 200px;
           border-radius: 30px;
-          padding-top: 160px; /* モバイルは既存の調整を維持するなら残す：必要なら調整可 */
         }
         section {
           border-radius: 18px;
           padding: 1.2rem 0.7rem;
         }
-        /* モバイルリンク hover */
         .nav-mobile a {
           color: #90caf9;
           background: rgba(255, 255, 255, 0.9);
@@ -209,6 +243,34 @@
         opacity: 0;
         transform: translateX(-8px);
       }
+      /* 自己紹介セクション内文字拡大と行間/字間調整 */
+      .intro-section {
+        text-align: center;
+      }
+      .intro-section h3 {
+        font-size: 2.1em;
+        letter-spacing: 0.08em;
+        line-height: 1.4;
+        margin-top: 0;
+        margin-bottom: 0.8em;
+      }
+      .intro-section p {
+        font-size: 1.35em; /* 通常より拡大 */
+        letter-spacing: 0.1em; /* 文字間隔拡大 */
+        line-height: 2.1; /* 行の幅(高さ)を広く */
+        margin: 0.4em 0;
+        font-weight: 500;
+        color: #90caf9; /* h2 と同じ色に統一 */
+      }
+      @media (max-width: 600px) {
+        .intro-section h3 {
+          font-size: 1.8em;
+        }
+        .intro-section p {
+          font-size: 1.25em;
+          line-height: 1.95;
+        }
+      }
     </style>
   </head>
   <body>
@@ -239,25 +301,47 @@
       <!-- ...existing code... -->
       <h2>自己紹介</h2>
       <section
+        class="intro-section"
         style="
-          background: rgba (225, 225, 0, 0.98);
+          background: rgba(255, 255, 255, 0.98);
           border-radius: 18px;
           box-shadow: 0 2px 8px rgba(144, 202, 249, 0.06);
-          padding: 24px;
-          margin-bottom: 32px;
+          padding: 32px 28px;
+          margin-bottom: 40px;
         "
       >
-        <h3>こんにちは！</h3>
-        <p>名前:若狹 希海</p>
-        <p>出身地:兵庫県</p>
+        <!-- 挨拶h3削除 -->
+        <p>名前: 若狹 希海</p>
+        <p>出身地: 兵庫県</p>
         <p>ホワイトハッカー専攻</p>
-        <p>趣味:音楽鑑賞・アニメ・ゲーム実況動画を見ること。</p>
+        <p>趣味: 音楽鑑賞・アニメ・ゲーム実況動画を見ること。</p>
         <p>好きなアーティスト：Stray Kids、aespa、SEVENTEEN</p>
       </section>
       <!-- ...existing code... -->
     </main>
-    <footer>&copy; profile</footer>
+    <footer><p>&copy; profile</p></footer>
     <script>
+      // ヘッダー高さに応じて main の余白を動的調整
+      (function () {
+        const header = document.querySelector("header");
+        const main = document.querySelector("main");
+        function adjustOffset() {
+          if (!header || !main) return;
+          const h = header.getBoundingClientRect().height;
+          document.documentElement.style.setProperty(
+            "--dynamic-header-height",
+            h + "px"
+          );
+          main.style.marginTop = `calc(${h}px + var(--header-extra-space))`;
+        }
+        window.addEventListener("load", adjustOffset);
+        window.addEventListener("resize", adjustOffset);
+        if (document.fonts && document.fonts.addEventListener) {
+          document.fonts.addEventListener("loadingdone", adjustOffset);
+          document.fonts.ready.then(adjustOffset);
+        }
+      })();
+
       // ハンバーガーメニューの開閉（他ページと同一）
       const hamburger = document.getElementById("hamburger-menu");
       const navMobile = document.getElementById("nav-mobile");

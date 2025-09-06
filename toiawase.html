@@ -134,16 +134,28 @@
         pointer-events: auto;
       }
 
+      :root {
+        --header-extra-space: 40px;
+      }
+
       main {
         max-width: 700px;
-        margin: 180px auto 80px auto; /* 48px -> 180px */
+        margin: 0 auto 80px auto; /* 上部余白はJSで動的計算 */
         background: rgba(255, 255, 255, 0.98);
         padding: 36px;
         border-radius: 36px;
         box-shadow: 0 4px 32px 0 #b3d8ff22, 0 0 60px 10px #fff8;
         color: #7fa7c7;
         font-weight: 400;
+        padding-bottom: 200px; /* 固定フッターとかぶらない余白 */
       }
+      /* スクロール位置補正（内部リンクやリロード時） */
+      h2,
+      main *,
+      main {
+        scroll-margin-top: calc(var(--dynamic-header-height, 220px) + 20px);
+      }
+
       h2 {
         color: #90caf9;
         font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN",
@@ -244,7 +256,7 @@
         }
         main {
           max-width: 98vw;
-          padding: 1.2rem 0.7rem;
+          padding: 1.2rem 0.7rem 200px; /* 下部余白維持 */
           border-radius: 30px;
         }
         form {
@@ -326,6 +338,27 @@
     </main>
     <footer>&copy; information</footer>
     <script>
+      // ヘッダー高さに応じてmain余白を動的調整
+      (function () {
+        const header = document.querySelector("header");
+        const main = document.querySelector("main");
+        function adjustOffset() {
+          if (!header || !main) return;
+          const h = header.getBoundingClientRect().height;
+          document.documentElement.style.setProperty(
+            "--dynamic-header-height",
+            h + "px"
+          );
+          main.style.marginTop = `calc(${h}px + var(--header-extra-space))`;
+        }
+        window.addEventListener("load", adjustOffset);
+        window.addEventListener("resize", adjustOffset);
+        // フォントロード後の高さ変化にも対応
+        document.fonts &&
+          document.fonts.addEventListener &&
+          document.fonts.addEventListener("loadingdone", adjustOffset);
+      })();
+
       // ハンバーガーメニューの開閉
       const hamburger = document.getElementById("hamburger-menu");
       const navMobile = document.getElementById("nav-mobile");
